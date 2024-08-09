@@ -1,0 +1,10 @@
+.landing-page-wrapper{
+    display: flex;
+    align-items: center;
+}
+
+.register-or-login-component{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

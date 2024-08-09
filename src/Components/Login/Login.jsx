@@ -18,7 +18,7 @@ const Login = () => {
       });
       setMessage(response.data);
       if (response.data === "Login successful") {
-        history("/"); // Redirect to the homepage
+        history("/home"); // Redirect to the homepage
       }
     } catch (error) {
       setMessage(error.response.data);
@@ -27,26 +27,30 @@ const Login = () => {
 
   return (
     <div className="login-container">
-      <form onSubmit={handleSubmit}>
-        <h1>Login</h1>
-        <label htmlFor="email">Email:</label>
-        <input
-          type="email"
-          id="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <label htmlFor="password">Password:</label>
-        <input
-          type="password"
-          id="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-        <button type="submit">Login</button>
-      </form>
+      <div className="login-element">
+        <form onSubmit={handleSubmit}>
+          <h1>Login</h1>
+          <label htmlFor="email">Email:</label>
+          <input
+            type="email"
+            id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+          <label htmlFor="password">Password:</label>
+          <input
+            type="password"
+            id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+          <button type="submit">Login</button>
+          <p>New to our family?</p>
+          <button onClick={() => { history("/") }}>Register Here</button>
+        </form>
+      </div>
       {message && <p>{message}</p>}
     </div>
   );
