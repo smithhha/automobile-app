@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./Register.css";
+import { useNavigate } from "react-router";
 
 const Register = () => {
   const [username, setUsername] = useState("");
@@ -11,7 +12,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5000/register", {
+      await axios.post("http://localhost:5000/register", {
         username,
         email,
         password,
@@ -20,6 +21,8 @@ const Register = () => {
       console.error("There was an error registering the user!", error);
     }
   };
+
+  const senUserTo = useNavigate();
 
   return (
     <div className="register-container">
@@ -50,6 +53,8 @@ const Register = () => {
           required
         />
         <button type="submit">Register</button>
+        <p>Already a family member?</p>
+        <button onClick={()=>{senUserTo("/login")}}>Go to Login</button>
       </form>
     </div>
   );
